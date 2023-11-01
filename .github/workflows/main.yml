@@ -27,3 +27,16 @@ jobs:
 
       - name: Run Unit Tests
         run: npm test
+
+      - name: Notify on Failure
+        if: failure()
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const issue_body = `Build failed on ${context.ref}`;
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: "Build Failure",
+              body: issue_body
+            });
