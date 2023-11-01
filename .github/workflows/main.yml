@@ -34,13 +34,13 @@ jobs:
           # Esto dependerá de tu entorno de alojamiento y configuración específica
 
       - name: Notify on Failure
-      if: failure()
-      uses: actions/github-script@v5
-      with:
-        script: |
-          github.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: 'Build fail.'
-          })
+        if: failure()
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Build fail.'
+            })
