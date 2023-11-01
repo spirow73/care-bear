@@ -32,3 +32,9 @@ jobs:
         run: |
           # Aquí puedes agregar comandos para implementar tu aplicación en un servidor de producción
           # Esto dependerá de tu entorno de alojamiento y configuración específica
+
+      - name: Notify on Failure
+        if: failure()
+        uses: pullreminders/pr-comment@v1
+        with:
+          message: "Build fail."
