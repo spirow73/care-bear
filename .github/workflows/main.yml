@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: 14
 
+      - name: Change Directory to care-bear
+        run: cd care-bear
+
       - name: Install Dependencies
         run: npm install
 
